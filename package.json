@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "pull-env": "dotenv-vault pull",
     "seed-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/seed-db.ts",
     "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts"
   },
@@ -26,6 +27,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "dotenv": "^16.3.1",
+    "dotenv-vault": "^1.25.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "eslint-config-prettier": "^9.0.0",

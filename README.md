@@ -1,22 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+[![ci](https://github.com/EmaSuriano/berlin-latino-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/EmaSuriano/berlin-latino-hub/actions/workflows/ci.yml)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
@@ -27,9 +13,30 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
   - Eslint config
   - App router (Not pages!)
   - Tailwind CSS
+  - SQL with Postgres hosted in Vercel
 - Setup automatic deployment with [Vercel](https://berlin-latino-hub.vercel.app/)
 - Add Prettier support for auto sorting of attributes
--
+- Github workflow as CI
+- Dependabot for checking outdated dependencies
+
+## Getting Started
+
+- Clone repository: `git clone https://github.com/EmaSuriano/berlin-latino-hub.git`
+- Make sure node version is `18`, or you can use [nvm](https://github.com/nvm-sh/nvm) to set it up automatically
+- Install dependencies with `npm`: `npm install`
+- Pull environment variables: `npm run pull-env`
+- Start the project: `npm run dev`
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+## Helpful scripts
+
+Located at [`./scripts`](./scripts/):
+
+- `seed-db`: Populate table with initial information.
+- `clean-up-db`: Wipe content from table.
 
 ## Learn More
 
