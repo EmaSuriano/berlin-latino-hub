@@ -24,7 +24,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Clone repository: `git clone https://github.com/EmaSuriano/berlin-latino-hub.git`
 - Make sure node version is `18`, or you can use [nvm](https://github.com/nvm-sh/nvm) to set it up automatically
 - Install dependencies with `npm`: `npm install`
-- Pull environment variables: `npm run pull-env`
+- Open vercel Storage and select the db: `https://vercel.com/hackaton-berlin/berlin-latino-hub/stores`
+  - Create a file called `.env.local` with the content of the tab called `.env.local`
 - Start the project: `npm run dev`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
