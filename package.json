@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "pull-env": "dotenv-vault pull",
+    "update-env": "dotenv-vault push",
     "seed-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/seed-db.ts",
     "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts"
   },

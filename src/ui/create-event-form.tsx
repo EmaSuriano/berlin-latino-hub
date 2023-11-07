@@ -12,7 +12,7 @@ export default function CreateEventForm() {
 
   return (
     <form action={dispatch}>
-      <div className="rounded-md bg-gray-50 p-4 md:p-6">
+      <div className="rounded-md bg-gray-50 p-4 dark:bg-gray-900 md:p-6">
         {FIELDS.map((field) => {
           const errors = state.errors && state.errors[field];
           return (
@@ -25,7 +25,7 @@ export default function CreateEventForm() {
                   <input
                     id={field}
                     name={field}
-                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-gray-800"
                     aria-describedby="amount-error"
                     required
                   />
