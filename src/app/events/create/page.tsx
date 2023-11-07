@@ -1,7 +1,8 @@
+import CreateEventForm from "@/ui/create-event-form";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function About() {
+export default async function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -29,8 +30,10 @@ export default function About() {
         </div>
       </div>
 
-      <h1 className="text-4xl">About</h1>
-      <h2>Add more info here ...</h2>
+      <div className="m-auto text-4xl">
+        {/* Mutation of data --> https://nextjs.org/learn/dashboard-app/mutating-data */}
+        <CreateEventForm />
+      </div>
     </main>
   );
 }

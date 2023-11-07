@@ -1,7 +1,19 @@
+import Search from "@/ui/search";
 import Image from "next/image";
 import Link from "next/link";
+import EventsTable from "@/ui/events-table";
+import { Suspense } from "react";
+import { TableSkeleton } from "@/ui/skeleton";
 
-export default function About() {
+type Props = {
+  searchParams?: {
+    query?: string;
+  };
+};
+
+export default async function Page({ searchParams }: Props) {
+  const query = searchParams?.query || "";
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -29,8 +41,15 @@ export default function About() {
         </div>
       </div>
 
-      <h1 className="text-4xl">About</h1>
-      <h2>Add more info here ...</h2>
+      <div>
+        {/* Search support --> https://nextjs.org/learn/dashboard-app/adding-search-and-pagination */}
+        <Search placeholder="Search events" />
+      </div>
+
+      {/* Streaming support ---> https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming */}
+      <Suspense fallback={<TableSkeleton columns={4} />}>
+        <EventsTable query={query} />
+      </Suspense>
     </main>
   );
 }
