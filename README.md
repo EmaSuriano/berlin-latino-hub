@@ -1,6 +1,6 @@
 ## Getting Started
 
-[![ci](https://github.com/EmaSuriano/berlin-latino-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/EmaSuriano/berlin-latino-hub/actions/workflows/ci.yml)
+[![ci](https://github.com/HackatonBerlin/berlin-latino-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/HackatonBerlin/berlin-latino-hub/actions/workflows/ci.yml)
 
 > This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -21,7 +21,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Getting Started
 
-- Clone repository: `git clone https://github.com/EmaSuriano/berlin-latino-hub.git`
+- Clone repository: `git clone https://github.com/HackatonBerlin/berlin-latino-hub.git`
 - Make sure node version is `18`, or you can use [nvm](https://github.com/nvm-sh/nvm) to set it up automatically
 - Install dependencies with `npm`: `npm install`
 - Open vercel Storage and select the db: `https://vercel.com/hackaton-berlin/berlin-latino-hub/stores`
