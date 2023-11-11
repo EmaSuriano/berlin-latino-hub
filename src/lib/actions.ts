@@ -6,8 +6,16 @@ import { redirect } from "next/navigation";
 import { Event, EventsSchema } from "./schema";
 import { z } from "zod";
 import { dateToSql } from "./utils";
+import { FC } from "react";
 
 const CreateEvent = EventsSchema.omit({ id: true });
+
+export type EventCreation = z.infer<typeof CreateEvent>;
+
+export type EventComponent = FC<{
+  name: keyof EventCreation;
+  errors: string[];
+}>;
 
 type FormDataErrors = z.inferFlattenedErrors<typeof CreateEvent>;
 
@@ -18,6 +26,8 @@ export type State = {
 
 export async function createEvent(_: State, formData: FormData) {
   // Validate form fields using Zod
+
+  console.log(formData.get("date"));
 
   const validatedFields = CreateEvent.safeParse({
     name: formData.get("name"),

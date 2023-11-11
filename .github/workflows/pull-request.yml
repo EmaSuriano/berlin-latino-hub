@@ -1,9 +1,6 @@
-name: ci
+name: PR
 
-on:
-  push:
-    branches:
-      - main
+on: [pull_request]
 
 jobs:
   build:
@@ -16,4 +13,5 @@ jobs:
           node-version-file: ".nvmrc"
 
       - run: npm install
+      - run: npm run lint
       - run: npm run build
