@@ -13,8 +13,8 @@ export default async function EventsTable({ query }: { query: string }) {
           key={event.id}
           className="flex w-[405px] flex-col rounded-xl border border-black border-opacity-70 bg-white p-4"
         >
-          <h2 className="mb-4 text-xl font-bold">{event.name_event}</h2>
-          <p className="mb-4 text-sm font-medium">{event.description_short}</p>
+          <h2 className="mb-4 text-xl font-bold">{event.name}</h2>
+          <p className="mb-4 text-sm font-medium">{event.description}</p>
           <div className="flex items-center justify-between">
             <div>
               <span className="text-xs font-normal">Cuando:</span>

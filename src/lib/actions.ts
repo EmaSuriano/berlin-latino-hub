@@ -24,19 +24,20 @@ export type State = {
   message?: string | null;
 };
 
+const parseFormData = (
+  form: Record<keyof EventCreation, File | string | null>,
+) => CreateEvent.safeParse(form);
+
 export async function createEvent(_: State, formData: FormData) {
   // Validate form fields using Zod
 
-  const validatedFields = CreateEvent.safeParse({
-    name_event: formData.get("name_event"),
+  const validatedFields = parseFormData({
+    name: formData.get("name"),
     location: formData.get("location"),
-    description_long: formData.get("description_long"),
-    description_short: formData.get("description_short"),
-    event_url: formData.get("event_url"),
+    description: formData.get("description"),
+    url: formData.get("url"),
     date_from: formData.get("date_from"),
     date_to: formData.get("date_to"),
-    name_organisator: formData.get("name_organisator"),
-    contact_organisator: formData.get("contact_organisator"),
     category: formData.get("category"),
   });
 
@@ -49,34 +50,21 @@ export async function createEvent(_: State, formData: FormData) {
   }
 
   // Prepare data for insertion into the database
-  const {
-    name_event,
-    name_organisator,
-    contact_organisator,
-    location,
-    description_long,
-    description_short,
-    category,
-    date_from,
-    date_to,
-    event_url,
-  } = validatedFields.data;
+  const { name, location, description, category, date_from, date_to, url } =
+    validatedFields.data;
 
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (name_event, name_organisator, contact_organisator,location, description_long, description_short, categories, date_from, date_to, event_url)
+      INSERT INTO events (name, location, description, category, date_from, date_to, url)
       VALUES (
-        ${name_event},
-        ${name_organisator},
-        ${contact_organisator},
+        ${name},
         ${location},
-        ${description_long},
-        ${description_short},
+        ${description},
         ${category},
         ${dateToSql(date_from)},
         ${dateToSql(date_to)},
-        ${event_url})
+        ${url})
     `;
   } catch (error) {
     // If a database error occurs, return a more specific error.
@@ -93,11 +81,10 @@ export async function createEvent(_: State, formData: FormData) {
 export const fetchEvents = (query: string) => sql<Event>`
   SELECT * FROM events
   WHERE
-    name_event ILIKE ${`%${query}%`} OR
+    name ILIKE ${`%${query}%`} OR
     location ILIKE ${`%${query}%`} OR
-    description_short ILIKE ${`%${query}%`} OR
-    description_long ILIKE ${`%${query}%`} OR
-    event_url ILIKE ${`%${query}%`}
+    description ILIKE ${`%${query}%`} OR
+    url ILIKE ${`%${query}%`}
   ORDER BY date_from DESC
 `;
 

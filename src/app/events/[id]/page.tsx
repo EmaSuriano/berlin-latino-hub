@@ -42,12 +42,12 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className="absolute left-[459px] top-[36px] h-6 w-[57px]" />
         <div className="absolute left-[31px] top-[73px] inline-flex h-16 items-center justify-end">
           <div className="w-[456px] font-['Roboto'] text-[52px] font-extrabold leading-[64px] text-indigo-950">
-            {event.name_event}
+            {event.name}
           </div>
         </div>
         <div className="absolute left-[30px] top-[151px] inline-flex h-12 w-[665px] items-center justify-center">
           <div className="w-[665px] font-['Roboto'] text-sm font-normal leading-normal text-gray-700">
-            {event.description_long}
+            {event.description}
           </div>
         </div>
         <div className="absolute left-[30px] top-[151px] inline-flex h-12 w-[665px] items-center justify-center">

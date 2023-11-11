@@ -12,16 +12,13 @@ async function seedEvents(client: VercelPoolClient) {
     const createTable = await client.sql`
     CREATE TABLE events (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      name_event VARCHAR(255) NOT NULL,
-      name_organisator VARCHAR(255) NOT NULL,
-      contact_organisator VARCHAR(255) NOT NULL,
+      name VARCHAR(255) NOT NULL,
       location VARCHAR(255) NOT NULL,
-      description_long TEXT,
-      description_short VARCHAR(500),
-      category VARCHAR(255),
-      date_from TIMESTAMP WITH TIME ZONE NOT NULL,
-      date_to TIMESTAMP WITH TIME ZONE NOT NULL,
-      event_url VARCHAR(255) NOT NULL
+      description VARCHAR(1000),
+      date_to DATE NOT NULL,
+      date_from DATE NOT NULL,
+      url VARCHAR(255) NOT NULL,
+      category VARCHAR(255)
     );
     `;
 
@@ -31,19 +28,16 @@ async function seedEvents(client: VercelPoolClient) {
     const insertedEvents = await Promise.all(
       PLACEHOLDER_EVENTS.map(
         (event) => client.sql`
-        INSERT INTO events (id, name_event, name_organisator, contact_organisator,location, description_long, description_short, category, date_from, date_to, event_url)
+        INSERT INTO events (id, name, location, description, category, date_from, date_to, url)
         VALUES (
           ${event.id},
-          ${event.name_event},
-          ${event.name_organisator},
-          ${event.contact_organisator},
+          ${event.name},
           ${event.location},
-          ${event.description_long},
-          ${event.description_short},
+          ${event.description},
           ${event.category},
           ${dateToSql(event.date_from)},
           ${dateToSql(event.date_to)},
-          ${event.event_url}
+          ${event.url}
         );
       `,
       ),

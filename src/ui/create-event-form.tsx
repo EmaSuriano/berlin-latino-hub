@@ -7,15 +7,12 @@ import { TextArea } from "./fields/text-area";
 import { CalendarInput } from "./fields/calendar-input";
 
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
-  name_event: TextInput,
+  name: TextInput,
   location: TextInput,
   date_from: CalendarInput,
   date_to: CalendarInput,
-  description_long: TextArea,
-  description_short: TextArea,
-  event_url: TextInput,
-  name_organisator: TextInput,
-  contact_organisator: TextInput,
+  description: TextArea,
+  url: TextInput,
   category: TextInput,
 };
 
