@@ -40,7 +40,7 @@ export async function createEvent(_: State, formData: FormData) {
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (name, location, date, url)
+      INSERT INTO events (name, location, description, date, url)
       VALUES (${name}, ${location}, ${dateToSql(date)}, ${url})
     `;
   } catch (error) {
