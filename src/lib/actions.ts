@@ -27,8 +27,6 @@ export type State = {
 export async function createEvent(_: State, formData: FormData) {
   // Validate form fields using Zod
 
-  console.log(formData.get("date"));
-
   const validatedFields = CreateEvent.safeParse({
     name: formData.get("name"),
     location: formData.get("location"),

@@ -6,12 +6,6 @@ import { EventComponent } from "@/lib/actions";
 import { PencilIcon } from "@heroicons/react/24/outline";
 
 export const CalendarInput: EventComponent = ({ name, errors }) => {
-  // const [date, setDate] = useState(new Date());
-
-  // const handleDateChange = (selectedDates: Date[]) => {
-  //   setDate(selectedDates[0]);
-  // };
-
   return (
     <div className="mb-4">
       <label htmlFor={name} className="mb-2 block text-sm font-medium">
