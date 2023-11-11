@@ -34,7 +34,7 @@ async function seedEvents(client: VercelPoolClient) {
     const insertedEvents = await Promise.all(
       PLACEHOLDER_EVENTS.map(
         (event) => client.sql`
-        INSERT INTO events (id, name, location, date, url)
+        INSERT INTO events (id, name_event, name_organisator,location, contact_organisator, date, url, description_long, description_short, categories, date_from, date_to, event_url , ticket_url, image, price)
         VALUES (
           ${event.id},
           ${event.name_event},
