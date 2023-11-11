@@ -9,6 +9,8 @@ import { dateToSql } from "./utils";
 
 const CreateEvent = EventsSchema.omit({ id: true });
 
+export type EventCreation = z.infer<typeof CreateEvent>;
+
 type FormDataErrors = z.inferFlattenedErrors<typeof CreateEvent>;
 
 export type State = {
