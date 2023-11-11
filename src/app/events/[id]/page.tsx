@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Page({ params }: { params: { id: string } }) {
-    console.log("primero",params.id);
   if (!validate(params.id)) {
     redirect("/404");
   }
@@ -14,7 +13,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (eventQuery.rowCount === 0) {
     redirect("/404");
   }
-  console.log("Segundo");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -44,7 +42,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       </div>
 
       <div className="m-auto">
-        // mila format Event data: {JSON.stringify(eventQuery.rows)}
+        Event data: {JSON.stringify(eventQuery.rows)}
       </div>
     </main>
   );
