@@ -10,7 +10,7 @@ function displayPageRoutes(directoryPath: string) {
   function traverseDirectory(currentPath: string): string[] {
     const files = fs.readdirSync(currentPath);
 
-    const asd = files.flatMap((file) => {
+    return files.flatMap((file) => {
       const filePath = path.join(currentPath, file);
 
       if (fs.statSync(filePath).isDirectory()) {
@@ -25,8 +25,6 @@ function displayPageRoutes(directoryPath: string) {
 
       return [];
     });
-
-    return asd;
   }
 
   return traverseDirectory(directoryPath);
