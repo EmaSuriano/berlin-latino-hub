@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/seed-db.ts",
+    "drop-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/drop-db.ts",
+    "create-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/create-db.ts",
     "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts"
   },
   "dependencies": {
@@ -19,12 +20,14 @@
     "react-calendar": "^4.6.1",
     "react-dom": "^18",
     "use-debounce": "^10.0.0",
+    "uuid": "^9.0.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^9.0.7",
     "autoprefixer": "^10.0.1",
     "dotenv": "^16.3.1",
     "eslint": "^8",

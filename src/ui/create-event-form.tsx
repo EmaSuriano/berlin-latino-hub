@@ -6,7 +6,7 @@ import { createEvent } from "@/lib/actions";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-const FIELDS = ["name", "location", "url", "date"] as const;
+const FIELDS = ["name", "location", "description", "url", "date"] as const;
 
 export default function CreateEventForm() {
   const initialState = { message: null, errors: {} };
