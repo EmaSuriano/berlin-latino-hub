@@ -3,6 +3,8 @@
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { useFormState } from "react-dom";
 import { createEvent } from "@/lib/actions";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const FIELDS = ["name", "location", "url", "date"] as const;
 
