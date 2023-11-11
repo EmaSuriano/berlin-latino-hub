@@ -6,9 +6,9 @@ const TicketEnum = z.enum(["Gratis", "Contactar Organizador", "Donación" ])
 // Zod validation first + type generation --> https://github.com/colinhacks/zod#basic-usage
 export const EventsSchema = z.object({
   id: z.string(),
-  name_event: z.string().min(3).max(100),
-  name_organisator: z.string().min(3).max(100),
-  contact_organisator: z.string().min(3).max(100),
+  name_event: z.string().min(3).max(500),
+  name_organisator: z.string().min(3).max(500),
+  contact_organisator: z.string().min(3).max(500),
   location: z.string(),
   description_long: z.string().max(1000),
   description_short: z.string().max(500),
@@ -18,7 +18,7 @@ export const EventsSchema = z.object({
   event_url: z.string().url(),
   ticket_url: TicketEnum.or(z.string().url()),
   image: z.string().max(1000),
-  price: z.number().or(z.string().max(10)),
+  price: z.number().or(z.string().max(100)),
 });
 
 export type Event = z.infer<typeof EventsSchema>;
