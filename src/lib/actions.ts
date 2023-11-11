@@ -65,3 +65,8 @@ export const fetchEvents = (query: string) => sql<Event>`
     url ILIKE ${`%${query}%`}
   ORDER BY date DESC
 `;
+
+export const fetchEvent = (id: string) => sql<Event>`
+  SELECT * FROM events
+  WHERE id = ${id}
+`;
