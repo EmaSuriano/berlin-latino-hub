@@ -23,7 +23,7 @@ export const EventsSchema = z.object({
   category: z.enum(CATEGORY_LIST),
   date_from: datelikeToDate,
   date_to: datelikeToDate,
-  url: z.string().url(),
+  url: z.string(),
 });
 
 export type Event = z.infer<typeof EventsSchema>;
