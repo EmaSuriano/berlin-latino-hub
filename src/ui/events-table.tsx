@@ -3,7 +3,7 @@
 import { fetchEvents } from "@/lib/actions";
 import { Event } from "@/lib/schema";
 
-const TABLE_ROWS: (keyof Event)[] = ["name", "date", "location", "url"];
+const TABLE_ROWS: (keyof Event)[] = ["name", "date", "location", "description", "url"];
 
 export default async function EventsTable({ query }: { query: string }) {
   const data = await fetchEvents(query);
