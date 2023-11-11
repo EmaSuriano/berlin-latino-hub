@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "clean": "rm -rf .next",
     "drop-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/drop-db.ts",
     "create-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/create-db.ts",
     "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts"
@@ -15,6 +16,8 @@
     "@heroicons/react": "^2.0.18",
     "@vercel/analytics": "^1.1.1",
     "@vercel/postgres": "^0.5.1",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",

@@ -9,21 +9,25 @@ import { CalendarInput } from "./fields/calendar-input";
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
   location: TextInput,
-  dateRange: CalendarInput,
+  // dateRange: CalendarInput,
+  date_from: CalendarInput,
+  date_to: CalendarInput,
   description: TextArea,
   url: TextInput,
+  category: TextInput,
 };
 
 export default function CreateEventForm() {
   const initialState = {
     message: null,
     errors: {},
-    dateRange: null,
+    date_from: null,
+    date_to: null,
   };
   const [state, dispatch] = useFormState(createEvent, initialState);
 
-  const handleDateSelect = (startDate: Date, endDate: Date) => {
-    dispatch({ ...state, dateRange: [startDate, endDate] });
+  const handleDateSelect = (startDate: any, endDate: any) => {
+    dispatch({ ...state, date_from: startDate, date_to: endDate });
   };
 
   return (
@@ -33,16 +37,18 @@ export default function CreateEventForm() {
           const key = name as keyof EventCreation;
           const errors = (state.errors && state.errors[key]) || [];
 
-          return key === "dateRange" ? (
-            <CalendarInput
-              key={key}
-              name={key}
-              errors={errors}
-              onDateSelect={handleDateSelect}
-            />
-          ) : (
-            <Component key={key} name={key} errors={errors} />
-          );
+          if (key === "date_from" || key === "date_to") {
+            return key === "date_from" ? (
+              <CalendarInput
+                key="dateRange"
+                name={key}
+                errors={errors}
+                onDateSelect={handleDateSelect}
+              />
+            ) : null;
+          } else {
+            return <Component key={key} name={key} errors={errors} />;
+          }
         })}
 
         {state.message ? (
