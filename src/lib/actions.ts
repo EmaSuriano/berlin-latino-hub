@@ -24,15 +24,21 @@ export type State = {
   message?: string | null;
 };
 
+const parseFormData = (
+  form: Record<keyof EventCreation, File | string | null>,
+) => CreateEvent.safeParse(form);
+
 export async function createEvent(_: State, formData: FormData) {
   // Validate form fields using Zod
 
-  const validatedFields = CreateEvent.safeParse({
+  const validatedFields = parseFormData({
     name: formData.get("name"),
     location: formData.get("location"),
     description: formData.get("description"),
     url: formData.get("url"),
-    date: formData.get("date"),
+    date_from: formData.get("date_from"),
+    date_to: formData.get("date_to"),
+    category: formData.get("category"),
   });
 
   // If form validation fails, return errors early. Otherwise, continue.
@@ -44,13 +50,21 @@ export async function createEvent(_: State, formData: FormData) {
   }
 
   // Prepare data for insertion into the database
-  const { name, location, description, url, date } = validatedFields.data;
+  const { name, location, description, category, date_from, date_to, url } =
+    validatedFields.data;
 
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (name, location, description, date, url)
-      VALUES (${name}, ${location}, ${description}, ${dateToSql(date)}, ${url})
+      INSERT INTO events (name, location, description, category, date_from, date_to, url)
+      VALUES (
+        ${name},
+        ${location},
+        ${description},
+        ${category},
+        ${dateToSql(date_from)},
+        ${dateToSql(date_to)},
+        ${url})
     `;
   } catch (error) {
     // If a database error occurs, return a more specific error.
@@ -71,7 +85,7 @@ export const fetchEvents = (query: string) => sql<Event>`
     location ILIKE ${`%${query}%`} OR
     description ILIKE ${`%${query}%`} OR
     url ILIKE ${`%${query}%`}
-  ORDER BY date DESC
+  ORDER BY date_from DESC
 `;
 
 export const fetchEvent = (id: string) => sql<Event>`

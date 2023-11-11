@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "clean": "rm -rf .next",
     "drop-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/drop-db.ts",
     "create-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/create-db.ts",
     "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts"

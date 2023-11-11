@@ -9,9 +9,11 @@ import { CalendarInput } from "./fields/calendar-input";
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
   location: TextInput,
-  date: CalendarInput,
+  date_from: CalendarInput,
+  date_to: CalendarInput,
   description: TextArea,
   url: TextInput,
+  category: TextInput,
 };
 
 export default function CreateEventForm() {
