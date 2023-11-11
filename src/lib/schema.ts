@@ -24,6 +24,7 @@ export const EventsSchema = z.object({
   date_from: datelikeToDate,
   date_to: datelikeToDate,
   url: z.string(),
+  image: z.string(),
 });
 
 export type Event = z.infer<typeof EventsSchema>;

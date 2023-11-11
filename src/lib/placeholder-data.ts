@@ -15,8 +15,7 @@ export const PLACEHOLDER_EVENTS: Event[] = [
     date_to: new Date("2023-12-10T13:00:00"),
     url: "https://www.facebook.com/AtrPartyBerlin/",
     // ticket_url: "Contactar Organizador",
-    // image:
-    //   "https://unsplash.com/photos/three-people-holding-glass-bottles-while-talking-_qADvinJi20",
+    image: "https://unsplash.com/photos/three-people-holding-glass-bottles-while-talking-_qADvinJi20",
     // price: 20.0,
   },
   {
@@ -32,7 +31,7 @@ export const PLACEHOLDER_EVENTS: Event[] = [
     date_to: new Date("2023-11-10T13:00:00"),
     url: "https://penia-argentina.com",
     // ticket_url: "Gratis",
-    // image: "https://unsplash.com/photos/fried-food-on-black-pan-JDAs0hvaEVI",
+    image: "https://unsplash.com/photos/fried-food-on-black-pan-JDAs0hvaEVI",
     // price: "Gratis",
   },
 ];
