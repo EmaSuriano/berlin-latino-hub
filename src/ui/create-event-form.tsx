@@ -1,20 +1,15 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import { EventCreation, createEvent } from "@/lib/actions";
-import { FC } from "react";
+import { EventComponent, EventCreation, createEvent } from "@/lib/actions";
 import { TextInput } from "./fields/text-input";
 import { TextArea } from "./fields/text-area";
-
-type EventComponent = FC<{
-  name: keyof EventCreation;
-  errors: string[];
-}>;
+import { CalendarInput } from "./fields/calendar-input";
 
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
   location: TextInput,
-  date: TextInput,
+  date: CalendarInput,
   description: TextArea,
   url: TextInput,
 };

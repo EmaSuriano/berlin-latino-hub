@@ -6,10 +6,16 @@ import { redirect } from "next/navigation";
 import { Event, EventsSchema } from "./schema";
 import { z } from "zod";
 import { dateToSql } from "./utils";
+import { FC } from "react";
 
 const CreateEvent = EventsSchema.omit({ id: true });
 
 export type EventCreation = z.infer<typeof CreateEvent>;
+
+export type EventComponent = FC<{
+  name: keyof EventCreation;
+  errors: string[];
+}>;
 
 type FormDataErrors = z.inferFlattenedErrors<typeof CreateEvent>;
 

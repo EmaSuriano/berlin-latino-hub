@@ -1,13 +1,7 @@
 "use client";
 
-import { EventCreation } from "@/lib/actions";
-import { FC } from "react";
+import { EventComponent } from "@/lib/actions";
 import { PencilIcon } from "@heroicons/react/24/outline";
-
-type EventComponent = FC<{
-  name: keyof EventCreation;
-  errors: string[];
-}>;
 
 export const TextInput: EventComponent = ({ name, errors }) => {
   return (
