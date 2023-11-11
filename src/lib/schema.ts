@@ -18,8 +18,7 @@ export const EventsSchema = z.object({
   event_url: z.string().url(),
   ticket_url: TicketEnum.or(z.string().url()),
   image: z.string().max(1000),
-  price: z.number(),
-  url: z.string().url()
+  price: z.number().or(z.string().max(10)),
 });
 
 export type Event = z.infer<typeof EventsSchema>;
