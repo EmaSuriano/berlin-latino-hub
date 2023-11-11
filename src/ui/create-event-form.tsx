@@ -4,7 +4,7 @@ import { PencilIcon } from "@heroicons/react/24/outline";
 import { useFormState } from "react-dom";
 import { createEvent } from "@/lib/actions";
 
-const FIELDS = ["name", "location", "url", "date"] as const;
+const FIELDS = ["name", "location", "description", "url", "date"] as const;
 
 export default function CreateEventForm() {
   const initialState = { message: null, errors: {} };
