@@ -39,7 +39,7 @@ async function seedEvents(client: VercelPoolClient) {
       ),
     );
 
-    console.log(`Seeded ${insertedEvents.length} events`);
+    console.log(`Created ${insertedEvents.length} events`);
 
     return {
       createTable,

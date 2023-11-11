@@ -36,7 +36,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 Located at [`./scripts`](./scripts/):
 
-- `seed-db`: Populate table with initial information.
+- `create-db`: Populate table with initial information.
 - `clean-up-db`: Wipe content from table.
 
 ## Learn More
