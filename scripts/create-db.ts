@@ -1,5 +1,5 @@
 import { VercelPoolClient, db } from "@vercel/postgres";
-import { events } from "../src/lib/placeholder-data";
+import { PLACEHOLDER_EVENTS } from "../src/lib/placeholder-data";
 import { dateToSql } from "../src/lib/utils";
 
 // Logic taken from --> https://github.com/vercel/next-learn/blob/main/dashboard/starter-example/scripts/seed.js
@@ -10,7 +10,7 @@ async function seedEvents(client: VercelPoolClient) {
 
     // Create the "events" table if it doesn't exist
     const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS events (
+      CREATE TABLE events (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         location VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ async function seedEvents(client: VercelPoolClient) {
 
     // Insert data into the "events" table
     const insertedEvents = await Promise.all(
-      events.map(
+      PLACEHOLDER_EVENTS.map(
         (event) => client.sql`
         INSERT INTO events (id, name, location, date, url)
         VALUES (
@@ -32,8 +32,7 @@ async function seedEvents(client: VercelPoolClient) {
           ${event.location},
           ${dateToSql(event.date)},
           ${event.url}
-        )
-        ON CONFLICT (id) DO NOTHING;
+        );
       `,
       ),
     );
