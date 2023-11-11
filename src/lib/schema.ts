@@ -6,7 +6,7 @@ export const EventsSchema = z.object({
   name: z.string().min(3).max(100),
   location: z.string(),
   date: z.coerce.date(),
-  url: z.string().url(),
+  url: z.string(),
 });
 
 export type Event = z.infer<typeof EventsSchema>;
