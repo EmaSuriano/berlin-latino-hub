@@ -15,8 +15,8 @@ export type EventCreation = z.infer<typeof CreateEvent>;
 export type EventComponent = FC<{
   name: keyof EventCreation;
   errors: string[];
+  onDateSelect?: (startDate: Date, endDate: Date) => void;
 }>;
-
 type FormDataErrors = z.inferFlattenedErrors<typeof CreateEvent>;
 
 export type State = {

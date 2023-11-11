@@ -9,26 +9,39 @@ import { CalendarInput } from "./fields/calendar-input";
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
   location: TextInput,
-  date: CalendarInput,
+  dateRange: CalendarInput,
   description: TextArea,
   url: TextInput,
 };
 
 export default function CreateEventForm() {
-  const initialState = { message: null, errors: {} };
+  const initialState = {
+    message: null,
+    errors: {},
+    dateRange: null,
+  };
   const [state, dispatch] = useFormState(createEvent, initialState);
+
+  const handleDateSelect = (startDate: Date, endDate: Date) => {
+    dispatch({ ...state, dateRange: [startDate, endDate] });
+  };
 
   return (
     <form action={dispatch}>
       <div className="rounded-md bg-gray-50 p-4 dark:bg-gray-900 md:p-6">
         {Object.entries(FIELDS).map(([name, Component]) => {
           const key = name as keyof EventCreation;
-          return (
-            <Component
+          const errors = (state.errors && state.errors[key]) || [];
+
+          return key === "dateRange" ? (
+            <CalendarInput
               key={key}
               name={key}
-              errors={(state.errors && state.errors[key]) || []}
+              errors={errors}
+              onDateSelect={handleDateSelect}
             />
+          ) : (
+            <Component key={key} name={key} errors={errors} />
           );
         })}
 
