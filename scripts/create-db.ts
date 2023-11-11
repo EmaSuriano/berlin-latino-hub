@@ -18,13 +18,10 @@ async function seedEvents(client: VercelPoolClient) {
       location VARCHAR(255) NOT NULL,
       description_long TEXT,
       description_short VARCHAR(500),
-      categories VARCHAR(255),
+      category VARCHAR(255),
       date_from TIMESTAMP WITH TIME ZONE NOT NULL,
-      date_to TIMESTAMP WITH TIME ZONE,
-      event_url VARCHAR(255) NOT NULL,
-      ticket_url VARCHAR(255),
-      image VARCHAR(1000),
-      price NUMERIC(10, 2),
+      date_to TIMESTAMP WITH TIME ZONE NOT NULL,
+      event_url VARCHAR(255) NOT NULL
     );
     `;
 
@@ -34,7 +31,7 @@ async function seedEvents(client: VercelPoolClient) {
     const insertedEvents = await Promise.all(
       PLACEHOLDER_EVENTS.map(
         (event) => client.sql`
-        INSERT INTO events (id, name_event, name_organisator, contact_organisator,location, description_long, description_short, categories, date_from, date_to, event_url , ticket_url, image, price)
+        INSERT INTO events (id, name_event, name_organisator, contact_organisator,location, description_long, description_short, category, date_from, date_to, event_url)
         VALUES (
           ${event.id},
           ${event.name_event},
@@ -43,19 +40,16 @@ async function seedEvents(client: VercelPoolClient) {
           ${event.location},
           ${event.description_long},
           ${event.description_short},
-          ${event.categories},
+          ${event.category},
           ${dateToSql(event.date_from)},
           ${dateToSql(event.date_to)},
-          ${event.event_url},
-          ${event.ticket_url},
-          ${event.image},
-          ${event.price}
+          ${event.event_url}
         );
       `,
       ),
     );
 
-    console.log(`Seeded ${insertedEvents.length} events`);
+    console.log(`Created ${insertedEvents.length} events`);
 
     return {
       createTable,

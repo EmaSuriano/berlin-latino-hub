@@ -6,8 +6,16 @@ import { redirect } from "next/navigation";
 import { Event, EventsSchema } from "./schema";
 import { z } from "zod";
 import { dateToSql } from "./utils";
+import { FC } from "react";
 
 const CreateEvent = EventsSchema.omit({ id: true });
+
+export type EventCreation = z.infer<typeof CreateEvent>;
+
+export type EventComponent = FC<{
+  name: keyof EventCreation;
+  errors: string[];
+}>;
 
 type FormDataErrors = z.inferFlattenedErrors<typeof CreateEvent>;
 
@@ -20,10 +28,16 @@ export async function createEvent(_: State, formData: FormData) {
   // Validate form fields using Zod
 
   const validatedFields = CreateEvent.safeParse({
-    name: formData.get("name"),
+    name_event: formData.get("name_event"),
     location: formData.get("location"),
-    url: formData.get("url"),
-    date: formData.get("date"),
+    description_long: formData.get("description_long"),
+    description_short: formData.get("description_short"),
+    event_url: formData.get("event_url"),
+    date_from: formData.get("date_from"),
+    date_to: formData.get("date_to"),
+    name_organisator: formData.get("name_organisator"),
+    contact_organisator: formData.get("contact_organisator"),
+    category: formData.get("category"),
   });
 
   // If form validation fails, return errors early. Otherwise, continue.
@@ -35,12 +49,23 @@ export async function createEvent(_: State, formData: FormData) {
   }
 
   // Prepare data for insertion into the database
-  const { name_event, name_organisator, contact_organisator,location, description_long, description_short, categories, date_from, date_to, event_url , ticket_url, image, price } = validatedFields.data;
+  const {
+    name_event,
+    name_organisator,
+    contact_organisator,
+    location,
+    description_long,
+    description_short,
+    category,
+    date_from,
+    date_to,
+    event_url,
+  } = validatedFields.data;
 
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (name_event, name_organisator, contact_organisator,location, description_long, description_short, categories, date_from, date_to, event_url , ticket_url, image, price)
+      INSERT INTO events (name_event, name_organisator, contact_organisator,location, description_long, description_short, categories, date_from, date_to, event_url)
       VALUES (
         ${name_event},
         ${name_organisator},
@@ -48,13 +73,10 @@ export async function createEvent(_: State, formData: FormData) {
         ${location},
         ${description_long},
         ${description_short},
-        ${categories},
+        ${category},
         ${dateToSql(date_from)},
         ${dateToSql(date_to)},
-        ${event_url},
-        ${ticket_url},
-        ${image},
-        ${price})
+        ${event_url})
     `;
   } catch (error) {
     // If a database error occurs, return a more specific error.
@@ -71,8 +93,15 @@ export async function createEvent(_: State, formData: FormData) {
 export const fetchEvents = (query: string) => sql<Event>`
   SELECT * FROM events
   WHERE
-    name ILIKE ${`%${query}%`} OR
+    name_event ILIKE ${`%${query}%`} OR
     location ILIKE ${`%${query}%`} OR
-    url ILIKE ${`%${query}%`}
-  ORDER BY date DESC
+    description_short ILIKE ${`%${query}%`} OR
+    description_long ILIKE ${`%${query}%`} OR
+    event_url ILIKE ${`%${query}%`}
+  ORDER BY date_from DESC
+`;
+
+export const fetchEvent = (id: string) => sql<Event>`
+  SELECT * FROM events
+  WHERE id = ${id}
 `;
