@@ -8,7 +8,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (!validate(params.id)) {
     redirect("/404");
   }
-
   const eventQuery = await fetchEvent(params.id);
 
   if (eventQuery.rowCount === 0) {
