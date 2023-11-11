@@ -12,17 +12,17 @@ export default async function EventsTable({ query }: { query: string }) {
       {data.rows.map((event) => (
         <div
           key={event.id}
-          className="flex w-[405px] flex-col rounded-xl border border-black border-opacity-70 bg-white p-4"
+          className="flex w-[405px] flex-col rounded-xl border border-black border-opacity-70 bg-white p-4 dark:bg-slate-800"
         >
           <h2 className="mb-2 text-xl font-bold">{event.name}</h2>
-          <div className="mt-0  mb-6 flex place-content-between">
+          <div className="mb-6  mt-0 flex place-content-between">
             <p className="mb-4 mr-4 text-sm font-medium">{event.description}</p>
             <Image
               src="/front-back.jpeg"
               alt="logo"
               width={150}
               height={150}
-              className="shadow-black-500 rounded-xl shadow-xl ml-4"
+              className="shadow-black-500 ml-4 rounded-xl shadow-xl"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -35,7 +35,7 @@ export default async function EventsTable({ query }: { query: string }) {
             </div>
             <Link
               href={`/events/${event.id}`}
-              className="rounded-md bg-[#00C2D1] px-2 py-1 text-xs font-normal text-black"
+              className="rounded-md bg-[#00C2D1] px-2 py-1 text-xs font-normal text-[#0A1045]"
             >
               ir a evento
             </Link>
