@@ -18,7 +18,8 @@ async function seedEvents(client: VercelPoolClient) {
       date_to DATE NOT NULL,
       date_from DATE NOT NULL,
       url VARCHAR(255) NOT NULL,
-      category VARCHAR(255)
+      category VARCHAR(255),
+      image VARCHAR(255)
     );
     `;
 
@@ -28,7 +29,7 @@ async function seedEvents(client: VercelPoolClient) {
     const insertedEvents = await Promise.all(
       PLACEHOLDER_EVENTS.map(
         (event) => client.sql`
-        INSERT INTO events (id, name, location, description, category, date_from, date_to, url)
+        INSERT INTO events (id, name, location, description, category, date_from, date_to, url, image)
         VALUES (
           ${event.id},
           ${event.name},
@@ -37,7 +38,8 @@ async function seedEvents(client: VercelPoolClient) {
           ${event.category},
           ${dateToSql(event.date_from)},
           ${dateToSql(event.date_to)},
-          ${event.url}
+          ${event.url},
+          ${event.image}
         );
       `,
       ),

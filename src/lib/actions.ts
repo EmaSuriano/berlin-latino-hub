@@ -39,6 +39,7 @@ export async function createEvent(_: State, formData: FormData) {
     date_from: formData.get("date_from"),
     date_to: formData.get("date_to"),
     category: formData.get("category"),
+    image: formData.get("image"),
   });
 
   // If form validation fails, return errors early. Otherwise, continue.
@@ -50,13 +51,13 @@ export async function createEvent(_: State, formData: FormData) {
   }
 
   // Prepare data for insertion into the database
-  const { name, location, description, category, date_from, date_to, url } =
+  const { name, location, description, category, date_from, date_to, url, image } =
     validatedFields.data;
 
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (name, location, description, category, date_from, date_to, url)
+      INSERT INTO events (name, location, description, category, date_from, date_to, url, image)
       VALUES (
         ${name},
         ${location},
@@ -64,7 +65,8 @@ export async function createEvent(_: State, formData: FormData) {
         ${category},
         ${dateToSql(date_from)},
         ${dateToSql(date_to)},
-        ${url})
+        ${url},
+        ${image})
     `;
   } catch (error) {
     // If a database error occurs, return a more specific error.
