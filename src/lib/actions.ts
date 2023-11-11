@@ -22,6 +22,7 @@ export async function createEvent(_: State, formData: FormData) {
   const validatedFields = CreateEvent.safeParse({
     name: formData.get("name"),
     location: formData.get("location"),
+    description: formData.get("description"),
     url: formData.get("url"),
     date: formData.get("date"),
   });
@@ -35,13 +36,13 @@ export async function createEvent(_: State, formData: FormData) {
   }
 
   // Prepare data for insertion into the database
-  const { name, location, url, date } = validatedFields.data;
+  const { name, location, description, url, date } = validatedFields.data;
 
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (name, location, date, url)
-      VALUES (${name}, ${location}, ${dateToSql(date)}, ${url})
+      INSERT INTO events (name, location, description, date, url)
+      VALUES (${name}, ${location}, ${description}, ${dateToSql(date)}, ${url})
     `;
   } catch (error) {
     // If a database error occurs, return a more specific error.
@@ -60,6 +61,7 @@ export const fetchEvents = (query: string) => sql<Event>`
   WHERE
     name ILIKE ${`%${query}%`} OR
     location ILIKE ${`%${query}%`} OR
+    description ILIKE ${`%${query}%`} OR
     url ILIKE ${`%${query}%`}
   ORDER BY date DESC
 `;
