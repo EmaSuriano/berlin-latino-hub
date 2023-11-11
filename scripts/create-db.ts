@@ -10,13 +10,22 @@ async function seedEvents(client: VercelPoolClient) {
 
     // Create the "events" table if it doesn't exist
     const createTable = await client.sql`
-      CREATE TABLE events (
-        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        location VARCHAR(255) NOT NULL,
-        date DATE NOT NULL,
-        url VARCHAR(255) NOT NULL
-      );
+    CREATE TABLE events (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      name_event VARCHAR(255) NOT NULL,
+      name_organisator VARCHAR(255) NOT NULL,
+      contact_organisator VARCHAR(255) NOT NULL,
+      location VARCHAR(255) NOT NULL,
+      description_long TEXT,
+      description_short VARCHAR(500),
+      categories VARCHAR(255),
+      date_from TIMESTAMP WITH TIME ZONE NOT NULL,
+      date_to TIMESTAMP WITH TIME ZONE,
+      event_url VARCHAR(255) NOT NULL,
+      ticket_url VARCHAR(255),
+      image VARCHAR(1000),
+      price NUMERIC(10, 2),
+    );
     `;
 
     console.log(`Created "events" table`);
@@ -28,10 +37,19 @@ async function seedEvents(client: VercelPoolClient) {
         INSERT INTO events (id, name, location, date, url)
         VALUES (
           ${event.id},
-          ${event.name},
+          ${event.name_event},
+          ${event.name_organisator},
+          ${event.contact_organisator},
           ${event.location},
-          ${dateToSql(event.date)},
-          ${event.url}
+          ${event.description_long},
+          ${event.description_short},
+          ${event.categories},
+          ${dateToSql(event.date_from)},
+          ${dateToSql(event.date_to)},
+          ${event.event_url},
+          ${event.ticket_url},
+          ${event.image},
+          ${event.price}
         );
       `,
       ),
