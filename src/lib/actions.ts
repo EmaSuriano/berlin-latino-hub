@@ -35,13 +35,26 @@ export async function createEvent(_: State, formData: FormData) {
   }
 
   // Prepare data for insertion into the database
-  const { name, location, url, date } = validatedFields.data;
+  const { name_event, name_organisator, contact_organisator,location, description_long, description_short, categories, date_from, date_to, event_url , ticket_url, image, price } = validatedFields.data;
 
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (name, location, description, date, url)
-      VALUES (${name}, ${location}, ${dateToSql(date)}, ${url})
+      INSERT INTO events (name_event, name_organisator, contact_organisator,location, description_long, description_short, categories, date_from, date_to, event_url , ticket_url, image, price)
+      VALUES (
+        ${name_event},
+        ${name_organisator},
+        ${contact_organisator},
+        ${location},
+        ${description_long},
+        ${description_short},
+        ${categories},
+        ${dateToSql(date_from)},
+        ${dateToSql(date_to)},
+        ${event_url},
+        ${ticket_url},
+        ${image},
+        ${price})
     `;
   } catch (error) {
     // If a database error occurs, return a more specific error.
