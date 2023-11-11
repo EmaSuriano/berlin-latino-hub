@@ -21,7 +21,12 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className="relative h-[832px] w-[1241px] bg-zinc-200">
         <div className="absolute left-[31px] top-[36px] inline-flex h-6 w-[109px] items-center justify-center">
           <div className="w-[109px] font-['Roboto'] text-lg font-normal leading-normal text-gray-700 text-opacity-50">
-            {format(event.date, "EE d MMMM", { locale: es })}
+            {format(event.date_from, "EE d MMMM", { locale: es })}
+          </div>
+        </div>
+        <div className="absolute left-[31px] top-[36px] inline-flex h-6 w-[109px] items-center justify-center">
+          <div className="w-[109px] font-['Roboto'] text-lg font-normal leading-normal text-gray-700 text-opacity-50">
+            {format(event.date_to, "EE d MMMM", { locale: es })}
           </div>
         </div>
         <div className="absolute left-[184px] top-[36px] inline-flex h-6 w-[47px] items-center justify-center">

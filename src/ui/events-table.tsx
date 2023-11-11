@@ -17,7 +17,7 @@ export default async function EventsTable({ query }: { query: string }) {
           <p className="mb-4 text-sm font-medium">{event.description}</p>
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs font-normal">Cuando: </span>
+              <span className="text-xs font-normal">Cuando:</span>
               <span className="text-xs font-normal">fecha</span>
             </div>
 

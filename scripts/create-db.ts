@@ -10,14 +10,16 @@ async function seedEvents(client: VercelPoolClient) {
 
     // Create the "events" table if it doesn't exist
     const createTable = await client.sql`
-      CREATE TABLE events (
-        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        location VARCHAR(255) NOT NULL,
-        description VARCHAR(1000),
-        date DATE NOT NULL,
-        url VARCHAR(255) NOT NULL
-      );
+    CREATE TABLE events (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      location VARCHAR(255) NOT NULL,
+      description VARCHAR(1000),
+      date_to DATE NOT NULL,
+      date_from DATE NOT NULL,
+      url VARCHAR(255) NOT NULL,
+      category VARCHAR(255)
+    );
     `;
 
     console.log(`Created "events" table`);
@@ -26,13 +28,15 @@ async function seedEvents(client: VercelPoolClient) {
     const insertedEvents = await Promise.all(
       PLACEHOLDER_EVENTS.map(
         (event) => client.sql`
-        INSERT INTO events (id, name, location, description, date, url)
+        INSERT INTO events (id, name, location, description, category, date_from, date_to, url)
         VALUES (
           ${event.id},
           ${event.name},
           ${event.location},
           ${event.description},
-          ${dateToSql(event.date)},
+          ${event.category},
+          ${dateToSql(event.date_from)},
+          ${dateToSql(event.date_to)},
           ${event.url}
         );
       `,
