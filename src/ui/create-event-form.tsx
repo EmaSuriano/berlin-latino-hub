@@ -1,16 +1,22 @@
 "use client";
 
+import React, { useState } from "react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { useFormState } from "react-dom";
 import { createEvent } from "@/lib/actions";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/themes/material_green.css";
 
 const FIELDS = ["name", "location", "description", "url", "date"] as const;
 
 export default function CreateEventForm() {
   const initialState = { message: null, errors: {} };
   const [state, dispatch] = useFormState(createEvent, initialState);
+  const [date, setDate] = useState(new Date());
+
+  const handleDateChange = (selectedDates: Date[]) => {
+    setDate(selectedDates[0]);
+  };
 
   return (
     <form action={dispatch}>
@@ -24,13 +30,21 @@ export default function CreateEventForm() {
               </label>
               <div className="relative mt-2 rounded-md">
                 <div className="relative">
-                  <input
-                    id={field}
-                    name={field}
-                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-gray-800"
-                    aria-describedby="amount-error"
-                    required
-                  />
+                  {field === "date" ? (
+                    <Flatpickr
+                      value={date}
+                      onChange={handleDateChange}
+                      className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-gray-800"
+                    />
+                  ) : (
+                    <input
+                      id={field}
+                      name={field}
+                      className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-gray-800"
+                      aria-describedby="amount-error"
+                      required
+                    />
+                  )}
                   <PencilIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
                 </div>
               </div>
