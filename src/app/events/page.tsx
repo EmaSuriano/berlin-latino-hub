@@ -47,7 +47,7 @@ export default async function Page({ searchParams }: Props) {
       </div>
 
       {/* Streaming support ---> https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming */}
-      <Suspense fallback={<TableSkeleton columns={4} />}>
+      <Suspense fallback={<TableSkeleton columns={4} />} >
         <EventsTable query={query} />
       </Suspense>
     </main>
