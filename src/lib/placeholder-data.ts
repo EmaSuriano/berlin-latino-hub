@@ -1,6 +1,6 @@
 import { Event } from "./schema";
 
-export const events: Event[] = [
+export const PLACEHOLDER_EVENTS: Event[] = [
   {
     id: "3958dc9e-712f-4377-85e9-fec4b6a6442a",
     name: "ATR Party",

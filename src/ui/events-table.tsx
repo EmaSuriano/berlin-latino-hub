@@ -22,10 +22,10 @@ export default async function EventsTable({ query }: { query: string }) {
               <span className="text-xs font-normal">fecha</span>
             </div>
             
-            <Link href={"/event/id"}  className="text-xs font-normal bg-sky-500 text-black rounded-md px-2 py-1">
+            <Link href={`/events/${event.id}`}  className="text-xs font-normal bg-sky-500 text-black rounded-md px-2 py-1">
                 ir a evento
             </Link>
-            <a href=""></a>
+            
           </div>
         </div>
       ))}
