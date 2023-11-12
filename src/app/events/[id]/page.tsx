@@ -2,7 +2,7 @@ import { fetchEvent } from "@/lib/actions";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { validate } from "uuid";
-// import { formatDateToLocal } from "@/lib/utils";
+import { formatDateToLocal } from "@/lib/utils";
 
 export default async function Page({ params }: { params: { id: string } }) {
   if (!validate(params.id)) {
@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <p className="text-sm font-bol-7xext-gray-600 dark:text-gray-400 lg:text-base">
             Fecha:{" "}
             <span className="font-normal">
-              {/* {formatDateToLocal(event.date_from.toDateString(), "es")} */}
+              {formatDateToLocal(event.date_from.toDateString(), "es")}
             </span>
           </p>
         </div>
