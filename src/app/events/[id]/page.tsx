@@ -3,6 +3,7 @@ import { fetchEvent } from "@/lib/actions";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 
+
 export default async function Page({ params }: { params: { id: string } }) {
   if (!validate(params.id)) {
     redirect("/404");
@@ -83,6 +84,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
           <div className="font-['Inter'] text-sm font-normal leading-normal text-sky-500">
             {event.location}
+            
           </div>
         </div>
 
@@ -93,7 +95,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
         <div className="absolute left-[780px] top-[138px] font-['Inter'] text-base font-normal leading-7 text-white">
           <Image
-            src="/front-back.jpeg"
+            src={event.image}
             alt="logo"
             width={350}
             height={350}

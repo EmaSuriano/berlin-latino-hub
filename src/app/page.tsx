@@ -1,16 +1,5 @@
-// import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div>
-        home
-      {/* <Image
-        src={"/Hero-Image.png"}
-        alt={"hero image"}
-        width={1080}
-        height={350}
-        className="flex justify-center"
-      /> */}
-    </div>
-  );
+  redirect("/events");
 }

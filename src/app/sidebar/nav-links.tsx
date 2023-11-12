@@ -1,7 +1,7 @@
 "use client";
 import {
   UserGroupIcon,
-  DocumentDuplicateIcon,
+//   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,13 +9,13 @@ import clsx from "clsx";
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  {
-    name: "Events",
-    href: "/",
-    icon: DocumentDuplicateIcon,
-  },
-  { name: "Create Event", href: "/events/create", icon: UserGroupIcon },
+//   {
+//     name: "Events",
+//     href: "/",
+//     icon: DocumentDuplicateIcon,
+//   },
   { name: "Events", href: "/events", icon: UserGroupIcon },
+  { name: "Create Event", href: "/events/create", icon: UserGroupIcon },
 ];
 
 export default function NavLinks() {
