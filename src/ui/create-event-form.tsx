@@ -5,6 +5,7 @@ import { EventComponent, EventCreation, createEvent } from "@/lib/actions";
 import { TextInput } from "./fields/text-input";
 import { TextArea } from "./fields/text-area";
 import { CalendarInput } from "./fields/calendar-input";
+import { CategoryInput } from "./fields/category-input";
 
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
@@ -13,7 +14,7 @@ const FIELDS: Record<keyof EventCreation, EventComponent> = {
   date_to: CalendarInput,
   description: TextArea,
   url: TextInput,
-  category: TextInput,
+  category: CategoryInput,
 };
 
 export default function CreateEventForm() {
