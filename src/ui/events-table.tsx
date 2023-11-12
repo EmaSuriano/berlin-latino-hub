@@ -7,6 +7,19 @@ import { formatDateToLocal } from "@/lib/utils";
 export default async function EventsTable({ query }: { query: string }) {
   const data = await fetchEvents(query);
 
+  const truncateDescription = (description: string) => {
+    return description.length > 200 ? description.substring(0, 200) + "..." : description;
+  };
+
+  const isValidUrl = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
   return (
     <div className="m-10 flex flex-wrap justify-center gap-4">
       {data.rows.map((event) => (
@@ -16,11 +29,13 @@ export default async function EventsTable({ query }: { query: string }) {
         >
           <h2 className="mb-2 text-xl font-bold">{event.name}</h2>
           <div className="mb-6  mt-0 flex place-content-between">
-            <p className="mb-4 mr-4 text-sm font-medium">{event.description}</p>
+            <p className="mb-4 mr-4 text-sm font-medium">{truncateDescription(event.description)}</p>
             {event.image ? (
               <Image
-                src={event.image}
-                alt="Imagen del evento"
+              src={isValidUrl(event.image) ? event.image : "/front-back.jpeg"}
+              alt={isValidUrl(event.image) ? "Imagen del evento" : "Imagen por defecto"}
+               
+                layout="fixed"
                 width={150}
                 height={150}
                 className="shadow-black-500 ml-4 rounded-xl shadow-xl"
@@ -29,6 +44,7 @@ export default async function EventsTable({ query }: { query: string }) {
               <Image
                 src="/front-back.jpeg"
                 alt="Imagen por defecto"
+                layout="fixed"
                 width={150}
                 height={150}
                 className="shadow-black-500 ml-4 rounded-xl shadow-xl"
