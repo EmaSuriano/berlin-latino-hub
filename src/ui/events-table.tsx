@@ -17,13 +17,23 @@ export default async function EventsTable({ query }: { query: string }) {
           <h2 className="mb-2 text-xl font-bold">{event.name}</h2>
           <div className="mb-6  mt-0 flex place-content-between">
             <p className="mb-4 mr-4 text-sm font-medium">{event.description}</p>
-            <Image
-              src="/front-back.jpeg"
-              alt="logo"
-              width={150}
-              height={150}
-              className="shadow-black-500 ml-4 rounded-xl shadow-xl"
-            />
+            {event.image ? (
+              <Image
+                src={event.image}
+                alt="Imagen del evento"
+                width={150}
+                height={150}
+                className="shadow-black-500 ml-4 rounded-xl shadow-xl"
+              />
+            ) : (
+              <Image
+                src="/front-back.jpeg"
+                alt="Imagen por defecto"
+                width={150}
+                height={150}
+                className="shadow-black-500 ml-4 rounded-xl shadow-xl"
+              />
+            )}
           </div>
           <div className="flex items-center justify-between">
             <div>
