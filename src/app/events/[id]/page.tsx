@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <h1 className="mb-2 text-2xl font-bold dark:text-gray-200 lg:text-4xl">
             {event.name}
           </h1>
-          <p className="text-sm font-bold text-gray-600 dark:text-gray-400 lg:text-base">
+          <p className="text-sm font-bol-7xext-gray-600 dark:text-gray-400 lg:text-base">
             Fecha:{" "}
             <span className="font-normal">
               {/* {formatDateToLocal(event.date_from.toDateString(), "es")} */}
