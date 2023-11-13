@@ -36,3 +36,5 @@ next-env.d.ts
 .flaskenv*
 !.env.project
 !.env.vault
+
+/storage.json
