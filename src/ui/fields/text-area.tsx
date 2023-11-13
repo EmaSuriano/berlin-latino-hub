@@ -1,6 +1,6 @@
 "use client";
 
-import { EventComponent } from "@/lib/actions";
+import { EventComponent } from "@/lib/form";
 import { PencilIcon } from "@heroicons/react/24/outline";
 
 export const TextArea: EventComponent = ({ name, errors }) => {

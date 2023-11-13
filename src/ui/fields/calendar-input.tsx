@@ -2,8 +2,8 @@
 
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_green.css";
-import { EventComponent } from "@/lib/actions";
 import { PencilIcon } from "@heroicons/react/24/outline";
+import { EventComponent } from "@/lib/form";
 
 export const CalendarInput: EventComponent = ({ name, errors }) => {
   return (

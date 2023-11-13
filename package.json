@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:local": "LOCAL_DB=true next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next",
     "drop-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/drop-db.ts",
     "create-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/create-db.ts",
-    "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts"
+    "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts",
+    "create-local-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/create-local-db.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
