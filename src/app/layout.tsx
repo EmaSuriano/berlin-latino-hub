@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ReactNode } from "react";
 import SideNav from "./sidebar/sidenav";
-
+// import Image from "next/image";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,14 +19,22 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Vamos Berlin!</title>
       </head>
-      <body>
+      <body >
+        
         <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
           <div className="w-full flex-none md:w-64">
             <SideNav />
           </div>
           <div className="flex-grow py-4 md:overflow-y-auto">{children}</div>
+            {/* <Image
+        src={"/Hero-Image.png"}
+        alt={"hero image"}
+        width={1080}
+        height={350}
+        className="flex justify-center"
+      /> */}
         </div>
       </body>
     </html>

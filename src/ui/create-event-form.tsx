@@ -1,10 +1,11 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import { EventComponent, EventCreation, createEvent } from "@/lib/actions";
+import { createEvent } from "@/lib/actions";
 import { TextInput } from "./fields/text-input";
 import { TextArea } from "./fields/text-area";
 import { CalendarInput } from "./fields/calendar-input";
+import { EventComponent, EventCreation } from "@/lib/form";
 
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
@@ -14,6 +15,7 @@ const FIELDS: Record<keyof EventCreation, EventComponent> = {
   description: TextArea,
   url: TextInput,
   category: TextInput,
+  image: TextInput
 };
 
 export default function CreateEventForm() {
