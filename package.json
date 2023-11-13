@@ -10,9 +10,7 @@
     "lint": "next lint",
     "clean": "rm -rf .next",
     "test": "playwright test",
-    "drop-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/drop-db.ts",
-    "create-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/create-db.ts",
-    "clean-up-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/clean-up-db.ts",
+    "reset-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/reset-db.ts",
     "create-local-db": "ts-node  -O '{\"module\":\"commonjs\"}' -r dotenv/config ./scripts/create-local-db.ts"
   },
   "dependencies": {
