@@ -14,6 +14,7 @@ export const CalendarInput: EventComponent = ({ name, errors }) => {
       <div className="relative mt-2 rounded-md">
         <div className="relative">
           <Flatpickr
+            placeholder={name}
             id={name}
             name={name}
             options={{ dateFormat: "m/d/y", closeOnSelect: true }}

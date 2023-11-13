@@ -19,8 +19,11 @@ export default async function EventsTable({ query }: { query: string }) {
         <div
           key={event.id}
           className="flex w-[405px] flex-col rounded-xl border border-black border-opacity-70 bg-white p-4 dark:bg-slate-800"
+          aria-labelledby={event.id}
         >
-          <h2 className="mb-2 text-xl font-bold">{event.name}</h2>
+          <h2 className="mb-2 text-xl font-bold" id={event.id}>
+            {event.name}
+          </h2>
           <div className="mb-6 flex flex-grow place-content-between">
             <p className="text-sm font-medium">
               {truncateDescription(event.description)}
