@@ -23,7 +23,8 @@ export const EventSchema = z.object({
   date_from: datelikeToDate,
   date_to: datelikeToDate,
   url: z.string(),
-  image: z.string().url(),
+  // remove restriction of unsplash once we have our own uploader
+  image: z.string().includes("images.unsplash.com").url(),
 });
 
 export type Event = z.infer<typeof EventSchema>;

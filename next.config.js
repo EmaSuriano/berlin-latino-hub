@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ["images.unsplash.com", "unsplash.com"],
-    },
-
+  images: {
+    // remove restriction of unsplash once we have our own uploader
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
+  },
 };
 
 module.exports = nextConfig;

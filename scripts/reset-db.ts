@@ -57,9 +57,15 @@ async function seedEvents(client: VercelPoolClient) {
   }
 }
 
+async function dropEventsTable(client: VercelPoolClient) {
+  await client.sql`DROP TABLE events`;
+  console.log(`Removed "events" table`);
+}
+
 async function main() {
   const client = await db.connect();
 
+  await dropEventsTable(client);
   await seedEvents(client);
 
   // @ts-expect-error end() declaration not existing in client

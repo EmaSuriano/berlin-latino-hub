@@ -12,6 +12,7 @@ export const TextArea: EventComponent = ({ name, errors }) => {
       <div className="relative mt-2 rounded-md">
         <div className="relative">
           <textarea
+            placeholder={name}
             rows={3}
             id={name}
             name={name}

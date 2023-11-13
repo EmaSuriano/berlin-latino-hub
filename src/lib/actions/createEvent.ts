@@ -28,21 +28,35 @@ export async function createEvent(
     redirect("/events");
   }
 
-  const insertPayload = {
-    ...validatedFields.data,
-    date_from: dateToSql(validatedFields.data.date_from),
-    date_to: dateToSql(validatedFields.data.date_to),
-  };
+  // Prepare data for insertion into the database
+  const {
+    name,
+    location,
+    description,
+    category,
+    date_from,
+    date_to,
+    url,
+    image,
+  } = validatedFields.data;
 
   // Insert data into the database
   try {
     await sql`
-      INSERT INTO events (${Object.keys(insertPayload).join(", ")})
-      VALUES (${Object.values(insertPayload).join(", ")})`;
-  } catch (error) {
+    INSERT INTO events (name, location, description, category, date_from, date_to, url, image)
+    VALUES (
+      ${name},
+      ${location},
+      ${description},
+      ${category},
+      ${dateToSql(date_from)},
+      ${dateToSql(date_to)},
+      ${url},
+      ${image})`;
+  } catch (error: any) {
     // If a database error occurs, return a more specific error.
     return {
-      message: "Database Error: Failed to Create Event.",
+      message: `Database Error: Failed to Create Event. ${error.toString()}`,
     };
   }
 
