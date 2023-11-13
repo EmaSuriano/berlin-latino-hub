@@ -32,9 +32,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local setup
+/storage.json
+
 .env*
 .flaskenv*
 !.env.project
 !.env.vault
-
-/storage.json
