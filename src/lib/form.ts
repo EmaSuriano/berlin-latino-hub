@@ -32,5 +32,6 @@ export const validateCreateForm = (formData: FormData) => {
     date_from: formData.get("date_from"),
     date_to: formData.get("date_to"),
     category: formData.get("category"),
+    image: formData.get("image"),
   });
 };

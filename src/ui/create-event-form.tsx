@@ -15,6 +15,7 @@ const FIELDS: Record<keyof EventCreation, EventComponent> = {
   description: TextArea,
   url: TextInput,
   category: TextInput,
+  image: TextInput
 };
 
 export default function CreateEventForm() {
