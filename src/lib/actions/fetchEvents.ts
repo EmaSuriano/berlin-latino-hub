@@ -20,13 +20,12 @@ export const fetchEvents = (query: string) => {
     };
   }
 
-  const whereClauses = SEARCH_FIELDS.map(
-    (field) => `${field} ILIKE ${`%${query}%`}`,
-  );
-
   return sql<Event>`
     SELECT * FROM events
-    WHERE ${whereClauses.join(" OR ")}
+    WHERE name ILIKE ${`%${query}%`} OR
+      location ILIKE ${`%${query}%`} OR
+      description ILIKE ${`%${query}%`} OR
+      url ILIKE ${`%${query}%`}
     ORDER BY date_from DESC
   `;
 };

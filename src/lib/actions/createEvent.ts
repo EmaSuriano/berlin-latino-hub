@@ -34,15 +34,20 @@ export async function createEvent(
     date_to: dateToSql(validatedFields.data.date_to),
   };
 
+  const columns = Object.keys(insertPayload).join(", ");
+  const values = Object.values(insertPayload)
+    .map((value) => `'${value}'`)
+    .join(", ");
+
+  console.log(`INSERT INTO events (${columns}) VALUES (${values})`);
+
   // Insert data into the database
   try {
-    await sql`
-      INSERT INTO events (${Object.keys(insertPayload).join(", ")})
-      VALUES (${Object.values(insertPayload).join(", ")})`;
-  } catch (error) {
+    await sql`INSERT INTO events (${columns}) VALUES (${values})`;
+  } catch (error: any) {
     // If a database error occurs, return a more specific error.
     return {
-      message: "Database Error: Failed to Create Event.",
+      message: `Database Error: Failed to Create Event. ${error.toString()}`,
     };
   }
 

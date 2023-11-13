@@ -21,20 +21,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vamos Berlin!</title>
       </head>
-      <body >
-        
+      <body>
         <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
           <div className="w-full flex-none md:w-64">
             <SideNav />
           </div>
-          <div className="flex-grow py-4 md:overflow-y-auto">{children}</div>
-            {/* <Image
-        src={"/Hero-Image.png"}
-        alt={"hero image"}
-        width={1080}
-        height={350}
-        className="flex justify-center"
-      /> */}
+          <div className="flex-grow md:overflow-y-auto">{children}</div>
         </div>
       </body>
     </html>
