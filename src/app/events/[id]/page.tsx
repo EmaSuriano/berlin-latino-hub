@@ -1,17 +1,10 @@
 import { fetchEvent } from "@/lib/actions";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import { validate } from "uuid";
 import { formatDateToLocal } from "@/lib/utils";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  if (!validate(params.id)) {
-    redirect("/404");
-  }
-  const eventQuery = await fetchEvent(params.id);
-
-  const [event] = eventQuery.rows;
-
+  const event = await fetchEvent(params.id);
   if (!event) {
     redirect("/404");
   }
@@ -28,7 +21,8 @@ export default async function Page({ params }: { params: { id: string } }) {
               <p className="font-bol-7xext-gray-600 text-sm dark:text-gray-400 lg:text-base">
                 Fecha:{" "}
                 <span className="font-normal">
-                  {formatDateToLocal(event.date_from.toDateString(), "es")}
+                  {formatDateToLocal(event.dateFrom.toDateString(), "es")} -{" "}
+                  {formatDateToLocal(event.dateTo.toDateString(), "es")}
                 </span>
               </p>
             </div>

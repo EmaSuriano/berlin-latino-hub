@@ -11,8 +11,8 @@ export const PLACEHOLDER_EVENTS: Event[] = [
       "De tanto meneo necesitas una prótesis de cadera al día siguiente",
     // description_short: "trae tu mejor vibra pa perrear",
     category: "Fiesta",
-    date_from: new Date("2023-12-07T12:00:00"),
-    date_to: new Date("2023-12-10T13:00:00"),
+    dateFrom: new Date("2023-12-07T12:00:00"),
+    dateTo: new Date("2023-12-10T13:00:00"),
     url: "https://www.facebook.com/AtrPartyBerlin/",
     // ticket_url: "Contactar Organizador",
     image:
@@ -28,8 +28,8 @@ export const PLACEHOLDER_EVENTS: Event[] = [
     description: "El mejor lugar para reconectar con tu empanada interior	",
     // description_short: "musiquita rica",
     category: "Fiesta",
-    date_from: new Date("2023-11-07T11:00:00"),
-    date_to: new Date("2023-11-10T13:00:00"),
+    dateFrom: new Date("2023-11-07T11:00:00"),
+    dateTo: new Date("2023-11-10T13:00:00"),
     url: "https://penia-argentina.com",
     // ticket_url: "Gratis",
     image:
