@@ -10,8 +10,8 @@ import { EventComponent, EventCreation } from "@/lib/form";
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
   location: TextInput,
-  dateFrom: CalendarInput,
-  dateTo: CalendarInput,
+  date_from: CalendarInput,
+  date_to: CalendarInput,
   description: TextArea,
   url: TextInput,
   category: TextInput,

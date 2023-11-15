@@ -18,8 +18,8 @@ model Event {
   name        String
   location    String
   description String
-  dateTo      DateTime @map(name: "date_to")
-  dateFrom    DateTime @map(name: "date_from")
+  date_to     DateTime
+  date_from   DateTime
   category    String
   url         String
   image       String

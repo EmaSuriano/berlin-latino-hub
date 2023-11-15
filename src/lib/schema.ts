@@ -20,8 +20,8 @@ export const EventSchema = z.object({
   location: z.string(),
   description: z.string(),
   category: z.enum(CATEGORY_LIST),
-  dateFrom: datelikeToDate,
-  dateTo: datelikeToDate,
+  date_from: datelikeToDate,
+  date_to: datelikeToDate,
   url: z.string(),
   // remove restriction of unsplash once we have our own uploader
   image: z.string().includes("images.unsplash.com").url(),

@@ -29,8 +29,8 @@ export const validateCreateForm = (formData: FormData) => {
     location: formData.get("location"),
     description: formData.get("description"),
     url: formData.get("url"),
-    dateFrom: formData.get("dateFrom"),
-    dateTo: formData.get("dateTo"),
+    date_from: formData.get("date_from"),
+    date_to: formData.get("date_to"),
     category: formData.get("category"),
     image: formData.get("image"),
   });

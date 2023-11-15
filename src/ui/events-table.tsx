@@ -39,7 +39,7 @@ export default async function EventsTable({ query }: { query: string }) {
           <div className="flex items-center justify-between">
             <div>
               <span className="text-xs font-normal">
-                Fecha: {formatDateToLocal(event.dateFrom.toDateString(), "es")}
+                Fecha: {formatDateToLocal(event.date_from.toDateString(), "es")}
               </span>
             </div>
             <Link

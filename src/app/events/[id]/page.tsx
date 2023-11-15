@@ -21,8 +21,8 @@ export default async function Page({ params }: { params: { id: string } }) {
               <p className="font-bol-7xext-gray-600 text-sm dark:text-gray-400 lg:text-base">
                 Fecha:{" "}
                 <span className="font-normal">
-                  {formatDateToLocal(event.dateFrom.toDateString(), "es")} -{" "}
-                  {formatDateToLocal(event.dateTo.toDateString(), "es")}
+                  {formatDateToLocal(event.date_from.toDateString(), "es")} -{" "}
+                  {formatDateToLocal(event.date_to.toDateString(), "es")}
                 </span>
               </p>
             </div>
