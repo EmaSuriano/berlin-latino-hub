@@ -1,0 +1,28 @@
+// schema.prisma
+
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
+generator client {
+  provider = "prisma-client-js"
+}
+
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#datasource
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
+model Event {
+  id          String   @id @default(uuid())
+  name        String
+  location    String
+  description String
+  date_to     DateTime
+  date_from   DateTime
+  category    String
+  url         String
+  image       String
+
+  @@map(name: "events")
+}

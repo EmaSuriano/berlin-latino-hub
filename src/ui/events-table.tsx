@@ -5,7 +5,7 @@ import Link from "next/link";
 import { formatDateToLocal } from "@/lib/utils";
 
 export default async function EventsTable({ query }: { query: string }) {
-  const data = await fetchEvents(query);
+  const events = await fetchEvents(query);
 
   const truncateDescription = (description: string) => {
     return description.length > 200
@@ -15,7 +15,7 @@ export default async function EventsTable({ query }: { query: string }) {
 
   return (
     <div className="m-10 flex flex-wrap justify-center gap-4">
-      {data.rows.map((event) => (
+      {events.map((event) => (
         <div
           key={event.id}
           className="flex w-[405px] flex-col rounded-xl border border-black border-opacity-70 bg-white p-4 dark:bg-slate-800"
