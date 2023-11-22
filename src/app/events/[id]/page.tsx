@@ -1,8 +1,11 @@
+
+
 import { fetchEvent } from "@/lib/actions";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { validate } from "uuid";
 import { formatDateToLocal } from "@/lib/utils";
+import CloudinaryImage from '../../../../src/ui/fields/cloudinaryImage'
 
 export default async function Page({ params }: { params: { id: string } }) {
   if (!validate(params.id)) {
@@ -15,6 +18,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (!event) {
     redirect("/404");
   }
+ 
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 lg:p-24">
@@ -60,7 +64,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               </a>
             </p>
           </div>
-
+          <CloudinaryImage publicId={event.image} />
           <Image src={event.image} alt="Event Image" width={500} height={300} />
         </div>
       </div>

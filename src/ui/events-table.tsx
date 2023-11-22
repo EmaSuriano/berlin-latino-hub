@@ -4,6 +4,7 @@ import { fetchEvents } from "@/lib/actions";
 import Link from "next/link";
 import { formatDateToLocal } from "@/lib/utils";
 
+
 export default async function EventsTable({ query }: { query: string }) {
   const data = await fetchEvents(query);
 
@@ -12,7 +13,7 @@ export default async function EventsTable({ query }: { query: string }) {
       ? description.substring(0, 200) + "..."
       : description;
   };
-
+ 
   return (
     <div className="m-10 flex flex-wrap justify-center gap-4">
       {data.rows.map((event) => (
@@ -35,6 +36,7 @@ export default async function EventsTable({ query }: { query: string }) {
               height={150}
               className="ml-4 h-40 w-40 rounded-xl shadow-xl"
             />
+          
           </div>
           <div className="flex items-center justify-between">
             <div>

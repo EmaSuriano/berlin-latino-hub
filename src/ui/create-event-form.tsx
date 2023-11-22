@@ -6,6 +6,8 @@ import { TextInput } from "./fields/text-input";
 import { TextArea } from "./fields/text-area";
 import { CalendarInput } from "./fields/calendar-input";
 import { EventComponent, EventCreation } from "@/lib/form";
+// import { ImageUpload } from "./fields/image-input";
+
 
 const FIELDS: Record<keyof EventCreation, EventComponent> = {
   name: TextInput,
@@ -16,12 +18,13 @@ const FIELDS: Record<keyof EventCreation, EventComponent> = {
   url: TextInput,
   category: TextInput,
   image: TextInput,
+//   image: ImageUpload,
 };
 
 export default function CreateEventForm() {
   const initialState = { message: null, errors: {} };
   const [state, dispatch] = useFormState(createEvent, initialState);
-
+  
   return (
     <form action={dispatch}>
       <div className="grid grid-cols-1 gap-5 rounded-md bg-gray-200 p-4 dark:bg-gray-900 md:grid-cols-2 md:p-6">
@@ -36,7 +39,11 @@ export default function CreateEventForm() {
             </div>
           );
         })}
-
+        {/* <ImageUpload
+        name="image"
+        errors={(state.errors && state.errors.image) || []}
+        onChange={handleImageChange}
+      /> */}
         {state.message && (
           <div
             aria-live="polite"
